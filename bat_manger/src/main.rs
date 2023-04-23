@@ -54,7 +54,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         i2c.write(&[REG_SOC])?;
         let mut soc = [0u8; 1];
         i2c.read(&mut soc)?;
-        println!("Battery SOC is {}%", soc[0]);
+        println!("Battery SOC is {}%", 100*soc[0]/255);
 
         // Wait for 5 seconds before reading again
         sleep(Duration::from_secs(5));
